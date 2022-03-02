@@ -1,3 +1,6 @@
+/** 
+/*   Author: Henri Attimont
+/***
 
 #include "Keil_Comm.h"
 #include "tcpipservr.h"
@@ -12,7 +15,7 @@ int main()
 
 	Keil_Comm keil;
 
-	//lancement et conection à Keil
+	//lancement et conection Ã  Keil
 	status = keil.Connect_Keil("Result.txt", "C:/Keil_v5/UV4/UV4.exe");
 	
 
