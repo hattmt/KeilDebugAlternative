@@ -1,3 +1,7 @@
+/** 
+/*   Author: Henri Attimont
+/***
+
 #include "gdb_server.h"
 #include "tcpipservr.h"
 
