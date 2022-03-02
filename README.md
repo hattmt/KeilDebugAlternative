@@ -1,5 +1,5 @@
 # KeilDebugAlternative
-Permit to create a false arm gdb server and control keil through it.
+Permit to create an emulated arm gdb server and control keil through it.
 
 Use it with PlatformIO / Cortex-Debug in vscode or other IDE with arm gdb support.
 
