@@ -1,3 +1,6 @@
+/** 
+/*   Author: Henri Attimont
+/***
 #include "Keil_Comm.h"
 #include "gdb_server.h"
 
