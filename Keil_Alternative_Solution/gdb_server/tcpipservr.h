@@ -1,7 +1,3 @@
-/** 
-/*   Author: Henri Attimont
-/****/
-
 #pragma once
 
 #if !defined( _CRT_SECURE_NO_WARNINGS )

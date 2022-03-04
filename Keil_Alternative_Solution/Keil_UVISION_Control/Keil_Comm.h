@@ -1,7 +1,3 @@
-/** 
-/*   Author: Henri Attimont
-/****/
-
 #pragma once
 
 #if !defined( _CRT_SECURE_NO_WARNINGS )
@@ -28,6 +24,15 @@
 using namespace std;
 using namespace tinyxml2;
 
+typedef enum
+{
+    bkpt_set,
+    bkpt_unset,
+    bkpt_unset_all,
+}bkpt_action;
+
+
+
 class Keil_Comm
 {
 
@@ -37,7 +42,7 @@ public:
     //Gestion socket TCP IP debug/build/flash
     bool Connect_Keil( string log_file, string UV_path);
     bool Open_Project( string uvprojx_path );
-    bool Set_View( bool visible);
+    bool Set_View(uint8_t visible);
     bool Get_Registers(void);
     bool Update_Registers(void);
     bool Enter_Debug_Mode(void);
@@ -46,7 +51,11 @@ public:
     string Read_Exp(string expression);
     string Read_memory(uint32_t address, uint32_t size);
     bool Dbg_run ( void );
+    bool Dbg_Reset(void);
+    bool Dbg_Stop(void);
+    bool Dbg_Step_Into(void);
     bool Dbg_is_breakpoint();
+    bool Dbg_change_bp(uint32_t address, BKTYPE bkpt_type, uint32_t size, bkpt_action set);
     
     char reg_values[4096] = { 0 }; int reg_values_length = 4096;
     

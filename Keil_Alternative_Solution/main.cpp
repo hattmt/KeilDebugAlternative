@@ -1,6 +1,3 @@
-/** 
-/*   Author: Henri Attimont
-/****/
 
 #include "Keil_Comm.h"
 #include "tcpipservr.h"
@@ -9,22 +6,29 @@
 
 Gdb_Server gdb_server;
 
-int main()
+int main(int argc, char* argv[])
 {
 	int status = false;
 
 	Keil_Comm keil;
 
-	//lancement et conection Ã  Keil
+	printf("Configurer les ports keil entre 5101 et 5110\n");
+
+	if (argc != 3)
+	{
+		
+		printf("Argument 1 = chemin projet keil\n");
+		printf("Argument 2 = port serveur gbd\n");
+
+	}
+	//lancement et conection à Keil
 	status = keil.Connect_Keil("Result.txt", "C:/Keil_v5/UV4/UV4.exe");
 	
-
 	//ouverture du projet
-	status = keil.Open_Project("D:/programming/debugkeil/debugkeil/MDK-ARM/debugkeil.uvprojx");
+	status = keil.Set_View(2);
+	status = keil.Open_Project(argv[1]);
 
 	//afficher keil
-	status = keil.Set_View(true);
-
 	/*status = keil.Enter_Debug_Mode();
 
 	keil.Get_Registers();
@@ -33,10 +37,15 @@ int main()
 
 	 gdb_server;
 
-	gdb_server.Start("50000" , &keil);
-	
 
-	while (gdb_server.Loop());
+	 while (1)
+	 {
+		 gdb_server.Start(argv[2], &keil);
+
+
+		 while (gdb_server.Loop());
+	 }
+
 
 
 

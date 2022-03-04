@@ -1,14 +1,8 @@
-/** 
-/*   Author: Henri Attimont
-/****/
-
 #include "gdb_server.h"
 #include "tcpipservr.h"
 
 
 #define TAB_LENGTH 8
-
-
 
 size_t unhexify(uint8_t* bin, const char* hex, size_t count);
 
@@ -25,7 +19,10 @@ string endian_swap(string data) {
 }
 
 
-
+bool Gdb_Server::Is_initialised()
+{
+	return is_initialized;
+}
 
 string Gdb_Server::format_keil_data_registers( )
 {
@@ -79,6 +76,11 @@ void Gdb_Server::Read_gdb_cmd()
 	if (rx_command == "c") //continue
 	{
 		keil->Dbg_run();
+	}
+
+	if (rx_command == "s") // suppression de breakpoint
+	{
+		keil->Dbg_Step_Into();
 	}
 
 	if (rx_command == "!" || rx_command == "QStartNoAckMode" || rx_command == "Hg0" || rx_command == "Hc0" || rx_command == "Hc-1"|| rx_command == "qSymbol::" )
@@ -142,61 +144,68 @@ void Gdb_Server::Read_gdb_cmd()
 
 	if (rx_command[0] == 'Z') // insertion de breakpoint
 	{
-		uint8_t type = 0;
-		uint32_t addresse = 0;
+		uint32_t type_Z = 0;
+		uint32_t size_Z = 0;
+		uint32_t addresse_Z = 0;
 
-		sscanf(rx_command.c_str(), "z%u,%X", &type, &addresse);
+		sscanf(rx_command.c_str(), "Z%u,%X,%u", &type_Z, &addresse_Z,&size_Z);
 
-		switch (rx_command[1])
+		switch (type_Z)
 		{
-		case '1':
-
+			case software_bp:
+				keil->Dbg_change_bp(addresse_Z, BRKTYPE_EXEC, size_Z, bkpt_set);
 			break;
 
-		case '2':
-
-			break;
-		case '3':
-
+			case hardware_bp:
+				keil->Dbg_change_bp(addresse_Z, BRKTYPE_EXEC, size_Z, bkpt_set);
 			break;
 
-		case '4':
+			case read_watchpoint:
+				keil->Dbg_change_bp(addresse_Z, BRKTYPE_READ, size_Z, bkpt_set);
+			break;
 
+			case access_watchpoint:
+				keil->Dbg_change_bp(addresse_Z, BRKTYPE_WRITE, size_Z, bkpt_set);
 			break;
 
 		default:
 			break;
 		}
+
+		this->Write("OK");
 	}
 
 	if (rx_command[0] == 'z') // suppression de breakpoint
 	{
-		uint8_t type = 0;
+		uint32_t type = 0;
+		uint32_t size = 0;
 		uint32_t addresse = 0;
 
-		sscanf(rx_command.c_str(), "z%u,%X",&type, &addresse);
+		sscanf(rx_command.c_str(), "z%u,%X,%u", &type, &addresse, &size);
 
-		switch (rx_command[1])
+		switch (type)
 		{
-		case '1':
-
+		case software_bp:
+			keil->Dbg_change_bp(addresse, BRKTYPE_EXEC, size, bkpt_unset);
 			break;
 
-		case '2':
-
-			break;
-		case '3':
-
+		case hardware_bp:
+			keil->Dbg_change_bp(addresse, BRKTYPE_EXEC, size, bkpt_unset);
 			break;
 
-		case '4':
+		case read_watchpoint:
+			keil->Dbg_change_bp(addresse, BRKTYPE_READ, size, bkpt_unset);
+			break;
 
+		case access_watchpoint:
+			keil->Dbg_change_bp(addresse, BRKTYPE_WRITE, size, bkpt_unset);
 			break;
 
 		default:
 			break;
 		}
-			
+		
+		this->Write("OK");
 		//sscanf(address_str.c_str(), "%X", &address);
 	}
 
@@ -234,6 +243,7 @@ void Gdb_Server::Read_gdb_cmd()
 
 		printf("received from client Unexified: \"%s\"\n", buff);
 
+		//find halt and reset
 
 	}
 
@@ -250,9 +260,22 @@ Gdb_Server::Gdb_Server()
 
 bool Gdb_Server::Start(string port, Keil_Comm* keil_comm)
 {
+	bool status;
+	cout << "Initialisation GDB Server..." << endl;
 	this->keil = keil_comm;
+	status = keil->Set_View(2);
 	keil->Enter_Debug_Mode();
-	return server.Create_server(port);
+	keil->Dbg_change_bp(0, BRKTYPE_EXEC, 0, bkpt_unset_all);
+	status = server.Create_server(port);
+	
+
+	if (status == true)
+	{
+		is_initialized = true;
+		cout << "GDB server Running and Client Connected!" << endl;
+	}
+
+	return status;
 }
 
 
@@ -353,8 +376,13 @@ bool Gdb_Server::Loop()
 
 	if (status == ERROR_Received)
 	{
+		is_initialized = false;
+		keil->Dbg_Stop();
 		return false;
 	}
+
+
+
 
 
 	return true;

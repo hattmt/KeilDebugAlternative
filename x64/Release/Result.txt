@@ -1,0 +1,5 @@
+
+00:00:02.01 [T->] CUv3Client::GEN_MINIMIZE()
+00:00:02.01 [-->] [GEN_MINIMIZE         ] 
+00:00:02.11 [<--] [GEN_MINIMIZE         ] [OK]
+00:00:02.11 [<-T] CUv3Client::GEN_MINIMIZE() = UVSC_STATUS_SUCCESS         

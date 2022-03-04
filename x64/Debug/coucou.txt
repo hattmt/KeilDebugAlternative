@@ -1,0 +1,53 @@
+
+00:00:02.03 [T->] CUv3Client::GEN_EXIT()
+00:00:02.03 [T->] CUv3Client::DBG_EXIT()
+00:00:02.03 [T->] CUv3Client::DBG_STOP_EXECUTION()
+00:00:02.03 [-->] [DBG_STOP_EXECUTION   ] 
+00:00:02.07 [<--] [DBG_STOP_EXECUTION   ] [UV_STATUS_NOT_DEBUGGING   (Target is not in debug mode)]
+00:00:02.07 [-->] [GEN_CPLX_COMPLETE    ] 
+00:00:02.09 [<--] [GEN_CPLX_COMPLETE    ] [OK]
+00:00:02.09 [<-T] CUv3Client::DBG_STOP_EXECUTION() = UVSC_STATUS_COMMAND_ERROR   
+00:00:02.09 [-->] [DBG_EXIT             ] 
+00:00:02.12 [<--] [DBG_EXIT             ] [UV_STATUS_NOT_DEBUGGING   (Target is not in debug mode)]
+00:00:02.12 [-->] [GEN_CPLX_COMPLETE    ] 
+00:00:02.15 [<--] [GEN_CPLX_COMPLETE    ] [OK]
+00:00:02.15 [<-T] CUv3Client::DBG_EXIT() = UVSC_STATUS_COMMAND_ERROR   
+00:00:02.15 [-->] [GEN_EXIT             ] 
+00:00:02.18 [<--] [GEN_EXIT             ] [OK]
+00:00:02.18 [<-T] CUv3Client::GEN_EXIT() = UVSC_STATUS_SUCCESS         
+00:00:02.32 [<==] [PRJ_CLOSE            ] [OK                        (Closed project 'D:\programming\debugkeil\debugkeil\MDK-ARM\debugkeil.uvprojx')]
+00:00:06.36 [T->] CUv3Client::PRJ_LOAD()
+00:00:06.36 [T->] CUv3Client::DBG_EXIT()
+00:00:06.36 [T->] CUv3Client::DBG_STOP_EXECUTION()
+00:00:06.36 [-->] [DBG_STOP_EXECUTION   ] 
+00:00:06.40 [<--] [DBG_STOP_EXECUTION   ] [UV_STATUS_NOT_DEBUGGING   (Target is not in debug mode)]
+00:00:06.40 [-->] [GEN_CPLX_COMPLETE    ] 
+00:00:06.42 [<--] [GEN_CPLX_COMPLETE    ] [OK]
+00:00:06.42 [<-T] CUv3Client::DBG_STOP_EXECUTION() = UVSC_STATUS_COMMAND_ERROR   
+00:00:06.42 [-->] [DBG_EXIT             ] 
+00:00:06.45 [<--] [DBG_EXIT             ] [UV_STATUS_NOT_DEBUGGING   (Target is not in debug mode)]
+00:00:06.45 [-->] [GEN_CPLX_COMPLETE    ] 
+00:00:06.48 [<--] [GEN_CPLX_COMPLETE    ] [OK]
+00:00:06.48 [<-T] CUv3Client::DBG_EXIT() = UVSC_STATUS_COMMAND_ERROR   
+00:00:06.48 [-->] [PRJ_LOAD             ] [(PRJDATA) Code:0 D:/programming/debugkeil/debugkeil/MDK-ARM/debugkeil.uvprojx ]
+00:00:06.70 [<==] [PRJ_CLOSE            ] [OK                        (Closed project 'D:\programming\debugkeil\debugkeil\MDK-ARM\debugkeil.uvprojx')]
+00:00:06.71 [<--] [PRJ_LOAD             ] [OK]
+00:00:06.82 [<==] [PRJ_LOAD             ] [OK                        (Loaded project 'D:\programming\debugkeil\debugkeil\MDK-ARM\debugkeil.uvprojx')]
+00:00:06.82 [-->] [GEN_CPLX_COMPLETE    ] 
+00:00:06.86 [<--] [GEN_CPLX_COMPLETE    ] [OK]
+00:00:06.86 [<-T] CUv3Client::PRJ_LOAD() = UVSC_STATUS_SUCCESS         
+00:00:06.86 [T->] CUv3Client::GEN_SHOW()
+00:00:06.86 [-->] [GEN_SHOW             ] 
+00:00:07.12 [<--] [GEN_SHOW             ] [OK]
+00:00:07.12 [<-T] CUv3Client::GEN_SHOW() = UVSC_STATUS_SUCCESS         
+00:00:07.12 [T->] CUv3Client::DBG_ENTER()
+00:00:07.12 [-->] [DBG_ENTER            ] 
+00:00:07.15 [<--] [DBG_ENTER            ] [OK]
+00:00:07.17 [<==] [UV_MSGBOX_MSG        ] [UV_STATUS_INFO            (No ST-LINK detected)]
+00:00:07.17 [<==] [UV_MSGBOX_MSG        ] [UV_STATUS_INFO            (Cannot enter Debug Mode)]
+00:00:07.17 [<==] [PRJ_FLASH_DOWNLOAD   ] [UV_STATUS_FAILED          (Error: Flash Download failed  -  Target DLL has been cancelled
+)]
+00:00:07.17 [-->] [GEN_CPLX_COMPLETE    ] 
+00:00:07.18 [<==] [PRJ_BUILD_OUTPUT     ] [(PRJDATA) Code:1 Flash Load finished at 00:19:37 ]
+00:00:07.21 [<--] [GEN_CPLX_COMPLETE    ] [OK]
+00:00:07.21 [<-T] CUv3Client::DBG_ENTER() = UVSC_STATUS_COMMAND_ERROR   

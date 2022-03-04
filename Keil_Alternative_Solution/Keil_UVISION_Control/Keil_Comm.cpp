@@ -1,6 +1,3 @@
-/** 
-/*   Author: Henri Attimont
-/****/
 #include "Keil_Comm.h"
 #include "gdb_server.h"
 
@@ -54,12 +51,15 @@ bool Keil_Comm::Open_Project(string uvprojx_path)
 }
 
 
-bool Keil_Comm::Set_View(bool visible)
+bool Keil_Comm::Set_View(uint8_t visible)
 {
-	if ( visible == true )
-		RETURN_RESULT(UVSC_GEN_SHOW(keil_handle))
-	else
+	if ( visible == 0 )
 		RETURN_RESULT(UVSC_GEN_HIDE(keil_handle))
+	if (visible == 1)
+		RETURN_RESULT(UVSC_GEN_SHOW(keil_handle))
+	if (visible == 2)
+		RETURN_RESULT(UVSC_GEN_MINIMIZE(keil_handle))
+		
 }
 
 bool Keil_Comm::Get_project_value(bool visible)
@@ -235,7 +235,67 @@ bool Keil_Comm::Enter_Debug_Mode(void)
 	return 1;
 }
 
+bool Keil_Comm::Dbg_Stop(void)
+{
 
+	UVSC_STATUS status;
+	status = UVSC_DBG_EXIT(keil_handle);
+	return 1;
+}
+
+bool Keil_Comm::Dbg_Reset(void)
+{
+
+	UVSC_STATUS status;
+	status = UVSC_DBG_RESET(keil_handle);
+	return 1;
+}
+
+
+
+
+
+bool Keil_Comm::Dbg_change_bp(uint32_t address, BKTYPE bkpt_type, uint32_t size , bkpt_action set)
+{
+	// set == false
+	BKCHG bpchange;
+	bpchange.type = CHG_KILLBP;
+	bpchange.nTickMark = 0;
+
+	
+	// set == true *************************
+	BKPARM parameters;
+	parameters.type = bkpt_type;
+	parameters.count = 1;
+	parameters.accSize = 0;
+	parameters.nExpLen = size;
+	parameters.nCmdLen = 0;
+	
+	uint32_t size_param = sprintf(parameters.szBuffer, "0X%X", address);
+
+	/*******************************************/
+	BKRSP bp_resp[20];
+	int size_resp[20];
+	int brk_pt_cnt = 20;
+
+	if (set == bkpt_set)
+		UVSC_DBG_CREATE_BP(this->keil_handle, &parameters, sizeof(BKPARM), bp_resp, size_resp);
+	else
+	{
+		UVSC_DBG_ENUMERATE_BP(this->keil_handle, bp_resp, size_resp, &brk_pt_cnt);
+		
+		for (int i = 0; i < brk_pt_cnt; i++)
+		{
+			if (bp_resp[i].nAddress == address || set == bkpt_unset_all)
+			{
+				bpchange.nTickMark = bp_resp[i].nTickMark;
+				UVSC_DBG_CHANGE_BP(this->keil_handle, &bpchange, sizeof(BKCHG), bp_resp, size_resp);
+			}
+		}
+	}
+
+	return 1;
+}
 
 /*   UVPROJX file parsing  */
 bool Keil_Comm::UVPROJX_open( string path )
@@ -299,9 +359,15 @@ bool breakpoint;
 
 bool Keil_Comm::Dbg_run(void)
 {
-
 	UVSC_STATUS status;
 	status = UVSC_DBG_START_EXECUTION(this->keil_handle);
+	return 1;
+}
+
+bool Keil_Comm::Dbg_Step_Into(void)
+{
+	UVSC_STATUS status;
+	status = UVSC_DBG_STEP_INTO(this->keil_handle);
 	return 1;
 }
 
@@ -332,6 +398,7 @@ void cb_data(void* cb_custom, UVSC_CB_TYPE type, UVSC_CB_DATA* data)
 		{
 			if (data->msg.data.cmdRsp.cmd == UV_DBG_STOP_EXECUTION )
 			{
+				if(gdb_server.Is_initialised() == true )
 				gdb_server.Write("T05");
 			}
 		}

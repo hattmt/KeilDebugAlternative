@@ -1,7 +1,3 @@
-/** 
-/*   Author: Henri Attimont
-/****/
-
 #pragma once
 
 #if !defined( _CRT_SECURE_NO_WARNINGS )
@@ -13,6 +9,16 @@
 
 
 using namespace std;
+
+
+typedef enum {
+    software_bp,
+    hardware_bp,
+    read_watchpoint,
+    access_watchpoint,
+}breakpoints_types;
+
+
 
 class Gdb_Server
 {
@@ -29,6 +35,7 @@ public:
     bool Loop();
     void Read_gdb_cmd();
     string format_keil_data_registers();
+    bool Is_initialised();
 
 
 private:
@@ -40,4 +47,5 @@ private:
 
     string rx_command;
     Keil_Comm* keil = NULL;
+    bool is_initialized = false;
 };

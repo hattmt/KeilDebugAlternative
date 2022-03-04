@@ -1,7 +1,3 @@
-/** 
-/*   Author: Henri Attimont
-/****/
-
 #include "tcpipservr.h"
 
 
@@ -61,6 +57,8 @@ bool Tcp_Ip_server::Create_server(string port)
     }
 
     freeaddrinfo(result);
+    
+    printf("Server created and ready on %s\n", port.c_str());
 
     status = listen(ListenSocket, SOMAXCONN);
     if (status == SOCKET_ERROR) {
