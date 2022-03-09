@@ -56,6 +56,8 @@ public:
     bool Dbg_Step_Into(void);
     bool Dbg_is_breakpoint();
     bool Dbg_change_bp(uint32_t address, BKTYPE bkpt_type, uint32_t size, bkpt_action set);
+    bool Dbg_write_memory(uint32_t address,char* data, uint32_t size);
+    bool Dbg_Write_Reg( uint32_t reg_nb, uint32_t data);
     
     char reg_values[4096] = { 0 }; int reg_values_length = 4096;
     

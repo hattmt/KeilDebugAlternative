@@ -134,6 +134,47 @@ string Keil_Comm::Read_memory( uint32_t address , uint32_t size )
 	return ret;
 }
 
+
+bool Keil_Comm::Dbg_write_memory(uint32_t address, char* data, uint32_t size)
+{
+	AMEM* amem = (AMEM*)calloc(1, sizeof(AMEM) + size);
+	amem->nAddr = address;
+	amem->nBytes = size;
+
+	memcpy(amem->aBytes, data, size);
+	
+	UVSC_DBG_MEM_WRITE(this->keil_handle, amem, sizeof(AMEM) + size);
+	return true;
+}
+
+
+uint32_t swap_bytes(uint32_t val)
+{
+	return ((val >> 24) & 0xff) | // move byte 3 to byte 0
+		((val << 8) & 0xff0000) | // move byte 1 to byte 2
+		((val >> 8) & 0xff00) | // move byte 2 to byte 1
+		((val << 24) & 0xff000000); // byte 0 to byte 3
+}
+
+
+bool Keil_Comm::Dbg_Write_Reg(uint32_t reg_nb, uint32_t data)
+{
+	string value_str = std::to_string(swap_bytes(data));
+	
+	VSET vset ;
+	memset(&vset, 0, sizeof(VSET));
+
+	vset.val.vType = VTT_uint;
+	vset.val.v.ul = reg_nb;
+	
+	vset.str.nLen = value_str.length();
+	
+	memcpy(vset.str.szStr, value_str.c_str(), vset.str.nLen);
+
+	UVSC_DBG_REGISTER_SET(this->keil_handle, &vset,sizeof(VSET));
+	return true;
+}
+
 string Keil_Comm::Registers_to_xml(void)
 {
 	XMLDocument xml_register;
@@ -399,7 +440,7 @@ void cb_data(void* cb_custom, UVSC_CB_TYPE type, UVSC_CB_DATA* data)
 			if (data->msg.data.cmdRsp.cmd == UV_DBG_STOP_EXECUTION )
 			{
 				if(gdb_server.Is_initialised() == true )
-				gdb_server.Write("T05");
+					gdb_server.Write("T05");
 			}
 		}
 }

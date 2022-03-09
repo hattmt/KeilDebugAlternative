@@ -24,6 +24,10 @@ int main(int argc, char* argv[])
 	//lancement et conection à Keil
 	status = keil.Connect_Keil("Result.txt", "C:/Keil_v5/UV4/UV4.exe");
 	
+	if (status == false) {
+		printf("Error: couldn't connect to keil\n");
+		return -1;
+	}
 	//ouverture du projet
 	status = keil.Set_View(2);
 	status = keil.Open_Project(argv[1]);
@@ -99,6 +103,8 @@ int main(int argc, char* argv[])
 	add_offset("Text=0;Data=0;Bss=0");
 	//$g#67
 	add_offset("00000000c00000000000002066000000ec1f0020ffffffffffffffffffffffffffffffffffffffffffffffffffffffff00ed00e0e81f002067040008e203000800000001");
+	            78000020780200207802002078020020140F0008180000200000000000000000FFFFFFFFFFFFFFFF140F0008140F0008FFFFFFFF78060020470100089C0E00080000000178060020FCFFFFFFFFFFFF00
+				78000020780200207802002078020020140F0008180000200000000000000000FFFFFFFFFFFFFFFF140F0008140F0008FFFFFFFF78060020470100089C0E00080000000178060020FCFFFFFFFFFF00
 	
 	add_offset("l<?xml version=\"1.0\"?><threads></threads>");
 

@@ -30,9 +30,9 @@ string Gdb_Server::format_keil_data_registers( )
 
 	for (int i = 0; i < 17; i++)
 	{
-#ifdef DEBUG
+//#ifdef DEBUG
 		cout <<" "<< keil->registers[i].szReg << " " << keil->registers[i].szVal<<"\n";
-#endif
+//#endif
 		string tmp = string(keil->registers[i].szVal + 2);
 		tmp = endian_swap(tmp);
 		final_data += tmp;
@@ -40,9 +40,9 @@ string Gdb_Server::format_keil_data_registers( )
 
 	for (int i = 24; i < 26; i++)
 	{
-#ifdef DEBUG
+//#ifdef DEBUG
 		cout << " " << keil->registers[i].szReg << " " << keil->registers[i].szVal << "\n";
-#endif
+//#endif
 		string tmp = string(keil->registers[i].szVal + 2);
 		tmp = endian_swap(tmp);
 		final_data += tmp;
@@ -53,9 +53,9 @@ string Gdb_Server::format_keil_data_registers( )
 
 	for (int i = 27; i < 28; i++)
 	{
-#ifdef DEBUG
+//#ifdef DEBUG
 		cout << " " << keil->registers[i].szReg << " " << keil->registers[i].szVal << "\n";
-#endif
+//#endif
 		string tmp = string(keil->registers[i].szVal + 2);
 		tmp = endian_swap(tmp);
 		final_data += tmp;
@@ -210,6 +210,39 @@ void Gdb_Server::Read_gdb_cmd()
 	}
 
 
+	if (rx_command[0] == 'X') // ecriture de variable
+	{
+		uint32_t size = 0;
+		uint32_t addresse = 0;
+
+		uint32_t offset = 0;
+		recv_buf[0] = '0';
+
+		sscanf(recv_buf, "%X,%X:%n", &addresse, &size,&offset);
+		this->Write("OK");
+
+		if (size > 0)
+		{
+			char* data = (char*)&recv_buf[offset];
+			keil->Dbg_write_memory(addresse, data, size );
+
+			this->Write("OK");
+			//this->Write("E NN");erreur + num erreur
+		}
+	}
+
+
+	if (rx_command[0] == 'P') // ecriture de variable
+	{
+		uint32_t register_nb = 0;
+		uint32_t data = 0;
+
+		sscanf(rx_command.c_str(), "P%X=%X", &register_nb, &data);
+		keil->Dbg_Write_Reg( register_nb, data );
+		this->Write("OK");
+	}
+
+
 	if (rx_command[0] == 'm') // lecture memoire
 	{
 		uint32_t address = 0;
@@ -331,6 +364,7 @@ bool Gdb_Server::Loop()
 			printf("Client ACKN\n\n");
 #endif
 			buf_cursor = 0;
+			memset(recv_buf, 0, sizeof(recv_buf));
 			return true;
 		}
 
@@ -338,11 +372,20 @@ bool Gdb_Server::Loop()
 		{
 			printf("Client WRONG ACKN!!\n\n");
 			buf_cursor = 0;
+			memset(recv_buf, 0, sizeof(recv_buf));
 			this->Write(prev_command);
 			return true;
 		}
 
-		char* end = strchr(recv_buf, '#');
+		//char* end = strchr(recv_buf, '#');
+		char* end = NULL;
+
+		for (int i = 0; i < 1000; i++)
+		{
+			if (recv_buf[i] == '#')
+				end = &recv_buf[i];
+		}
+
 
 		if (end != NULL)
 		{
