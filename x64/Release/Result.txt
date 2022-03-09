@@ -1,5 +1,173 @@
 
 00:00:02.01 [T->] CUv3Client::GEN_MINIMIZE()
 00:00:02.01 [-->] [GEN_MINIMIZE         ] 
-00:00:02.11 [<--] [GEN_MINIMIZE         ] [OK]
-00:00:02.11 [<-T] CUv3Client::GEN_MINIMIZE() = UVSC_STATUS_SUCCESS         
+00:00:02.09 [<--] [GEN_MINIMIZE         ] [OK]
+00:00:02.09 [<-T] CUv3Client::GEN_MINIMIZE() = UVSC_STATUS_SUCCESS         
+00:00:02.09 [T->] CUv3Client::PRJ_LOAD()
+00:00:02.09 [T->] CUv3Client::DBG_EXIT()
+00:00:02.09 [T->] CUv3Client::DBG_STOP_EXECUTION()
+00:00:02.09 [-->] [DBG_STOP_EXECUTION   ] 
+00:00:02.12 [<--] [DBG_STOP_EXECUTION   ] [UV_STATUS_TARGET_STOPPED  (Target stopped)]
+00:00:02.12 [-->] [GEN_CPLX_COMPLETE    ] 
+00:00:02.14 [<--] [GEN_CPLX_COMPLETE    ] [OK]
+00:00:02.14 [<-T] CUv3Client::DBG_STOP_EXECUTION() = UVSC_STATUS_COMMAND_ERROR   
+00:00:02.14 [-->] [DBG_EXIT             ] 
+00:00:02.17 [<--] [DBG_EXIT             ] [OK]
+00:00:02.95 [<==] [DBG_EXIT             ] [OK]
+00:00:03.98 [-->] [GEN_CPLX_COMPLETE    ] 
+00:00:04.59 [<--] [GEN_CPLX_COMPLETE    ] [OK]
+00:00:04.59 [<-T] CUv3Client::DBG_EXIT() = UVSC_STATUS_SUCCESS         
+00:00:04.59 [-->] [PRJ_LOAD             ] [(PRJDATA) Code:0 D:\programming\debugkeil\debugkeil\MDK-ARM\debugkeil.uvprojx ]
+00:00:05.12 [<==] [PRJ_CLOSE            ] [OK                        (Closed project 'D:\programming\debugkeil\debugkeil\MDK-ARM\debugkeil.uvprojx')]
+00:00:05.12 [<--] [PRJ_LOAD             ] [OK]
+00:00:05.23 [<==] [PRJ_LOAD             ] [OK                        (Loaded project 'D:\programming\debugkeil\debugkeil\MDK-ARM\debugkeil.uvprojx')]
+00:00:05.23 [-->] [GEN_CPLX_COMPLETE    ] 
+00:00:07.18 [<--] [GEN_CPLX_COMPLETE    ] [OK]
+00:00:07.18 [<-T] CUv3Client::PRJ_LOAD() = UVSC_STATUS_SUCCESS         
+00:00:07.18 [T->] CUv3Client::GEN_MINIMIZE()
+00:00:07.18 [-->] [GEN_MINIMIZE         ] 
+00:00:07.21 [<--] [GEN_MINIMIZE         ] [OK]
+00:00:07.21 [<-T] CUv3Client::GEN_MINIMIZE() = UVSC_STATUS_SUCCESS         
+00:00:07.21 [T->] CUv3Client::DBG_ENTER()
+00:00:07.21 [-->] [DBG_ENTER            ] 
+00:00:07.25 [<--] [DBG_ENTER            ] [OK]
+00:00:07.29 [<==] [PRJ_PBAR_INIT        ] [OK                        (100)]
+00:00:07.29 [<==] [PRJ_PBAR_TEXT        ] [OK                        (Erase: )]
+00:00:07.29 [<==] [PRJ_PBAR_SET         ] [OK                        (0)]
+00:00:07.34 [<==] [PRJ_PBAR_SET         ] [OK                        (26)]
+00:00:07.39 [<==] [PRJ_PBAR_SET         ] [OK                        (52)]
+00:00:07.42 [<==] [PRJ_PBAR_SET         ] [OK                        (79)]
+00:00:07.46 [<==] [PRJ_PBAR_SET         ] [OK                        (100)]
+00:00:07.46 [<==] [PRJ_PBAR_SET         ] [OK                        (100)]
+00:00:07.53 [<==] [PRJ_PBAR_STOP        ] [OK                        (0)]
+00:00:07.53 [<==] [PRJ_PBAR_INIT        ] [OK                        (100)]
+00:00:07.53 [<==] [PRJ_PBAR_TEXT        ] [OK                        (Program: )]
+00:00:07.53 [<==] [PRJ_PBAR_SET         ] [OK                        (0)]
+00:00:07.59 [<==] [PRJ_PBAR_SET         ] [OK                        (26)]
+00:00:07.64 [<==] [PRJ_PBAR_SET         ] [OK                        (52)]
+00:00:07.68 [<==] [PRJ_PBAR_SET         ] [OK                        (79)]
+00:00:07.68 [<==] [PRJ_PBAR_SET         ] [OK                        (100)]
+00:00:07.73 [<==] [PRJ_PBAR_SET         ] [OK                        (100)]
+00:00:07.79 [<==] [PRJ_PBAR_STOP        ] [OK                        (0)]
+00:00:07.79 [<==] [PRJ_PBAR_INIT        ] [OK                        (100)]
+00:00:07.79 [<==] [PRJ_PBAR_TEXT        ] [OK                        (Verify: )]
+00:00:07.79 [<==] [PRJ_PBAR_SET         ] [OK                        (0)]
+00:00:07.84 [<==] [PRJ_PBAR_SET         ] [OK                        (100)]
+00:00:07.86 [<==] [PRJ_PBAR_SET         ] [OK                        (100)]
+00:00:07.90 [<==] [PRJ_PBAR_STOP        ] [OK                        (0)]
+00:00:07.90 [<==] [PRJ_FLASH_DOWNLOAD   ] [OK]
+00:00:07.92 [<==] [PRJ_BUILD_OUTPUT     ] [(PRJDATA) Code:0 Flash Load finished at 02:00:27 ]
+00:00:08.12 [<==] [DBG_CMD_OUTPUT       ] [(SSTR) Running with Code Size Limit: 32K]
+00:00:08.15 [<==] [DBG_CMD_OUTPUT       ] [(SSTR) Load "debugkeil\\debugkeil.axf" ]
+00:00:08.17 [<==] [PRJ_PBAR_INIT        ] [OK                        (100)]
+00:00:08.17 [<==] [PRJ_PBAR_TEXT        ] [OK                        (Loading object code...)]
+00:00:08.17 [<==] [PRJ_PBAR_SET         ] [OK                        (100)]
+00:00:08.21 [<==] [PRJ_PBAR_STOP        ] [OK                        (0)]
+00:00:08.23 [<==] [DBG_RESET            ] [OK]
+00:00:08.26 [<==] [DBG_RESET            ] [OK]
+00:00:08.96 [<==] [DBG_CMD_OUTPUT       ] [(SSTR) WS 1, `date]
+00:00:08.98 [<==] [DBG_CMD_OUTPUT       ] [(SSTR) WS 1, 20000000]
+00:00:08.98 [<==] [DBG_CMD_OUTPUT       ] [(SSTR) WS 1, 0X8000]
+00:00:08.98 [<==] [DBG_ENTER            ] [OK]
+00:00:08.98 [-->] [GEN_CPLX_COMPLETE    ] 
+00:00:08.98 [<==] [DBG_START_EXECUTION  ] [OK]
+00:00:08.98 [<--] [GEN_CPLX_COMPLETE    ] [OK]
+00:00:08.98 [<-T] CUv3Client::DBG_ENTER() = UVSC_STATUS_SUCCESS         
+00:00:08.98 [T->] CUv3Client::DBG_ENUMERATE_BP()
+00:00:08.98 [-->] [DBG_ENUMERATE_BP     ] 
+00:00:09.00 [<==] [DBG_RESET            ] [OK]
+00:00:09.01 [<--] [DBG_ENUMERATE_BP     ] [OK]
+00:00:09.01 [<==] [DBG_BP_ENUM_START    ] [OK]
+00:00:09.01 [<==] [DBG_BP_ENUM_END      ] [OK]
+00:00:09.01 [<-T] CUv3Client::DBG_ENUMERATE_BP() = UVSC_STATUS_SUCCESS         
+00:00:09.07 [<==] [DBG_STOP_EXECUTION   ] [(BPREASON) eReason:EXEC nPC:0x08000E9C nAdr:0x08000E9C nBpNum:-1 nTickMark:0x00000000 ]
+00:00:10.36 [T->] CUv3Client::DBG_ENUM_REGISTER_GROUPS()
+00:00:10.36 [-->] [UV_DBG_ENUM_REGISTER_GROUPS] [???]
+00:00:10.36 [<==] [UV_DBG_ENUM_REGISTER_GROUPS_START] [???]
+00:00:10.36 [<--] [UV_DBG_ENUM_REGISTER_GROUPS] [???]
+00:00:10.36 [<==] [UV_DBG_ENUM_REGISTER_GROUPS_ENU] [???]
+00:00:10.36 [<==] [UV_DBG_ENUM_REGISTER_GROUPS_ENU] [???]
+00:00:10.36 [<==] [UV_DBG_ENUM_REGISTER_GROUPS_ENU] [???]
+00:00:10.36 [<==] [UV_DBG_ENUM_REGISTER_GROUPS_ENU] [???]
+00:00:10.36 [<==] [UV_DBG_ENUM_REGISTER_GROUPS_END] [???]
+00:00:10.36 [<-T] CUv3Client::DBG_ENUM_REGISTER_GROUPS() = UVSC_STATUS_SUCCESS         
+00:00:10.36 [T->] CUv3Client::DBG_ENUM_REGISTERS()
+00:00:10.36 [-->] [UV_DBG_ENUM_REGISTERS] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_START] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<--] [UV_DBG_ENUM_REGISTERS] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_ENU] [???]
+00:00:10.39 [<==] [UV_DBG_ENUM_REGISTERS_END] [???]
+00:00:10.39 [<-T] CUv3Client::DBG_ENUM_REGISTERS() = UVSC_STATUS_SUCCESS         
+00:00:10.39 [T->] CUv3Client::DBG_READ_REGISTERS()
+00:00:10.39 [-->] [UV_DBG_READ_REGISTERS] [???]
+00:00:10.42 [<--] [UV_DBG_READ_REGISTERS] [???]
+00:00:10.42 [<-T] CUv3Client::DBG_READ_REGISTERS() = UVSC_STATUS_SUCCESS         
+00:00:10.45 [T->] CUv3Client::DBG_MEM_READ()
+00:00:10.45 [-->] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000E9C, Len:4 ]
+00:00:10.45 [<--] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000E9C, Len:4 Data: 0E B5 00 24 ]
+00:00:10.45 [<-T] CUv3Client::DBG_MEM_READ() = UVSC_STATUS_SUCCESS         
+00:00:12.50 [T->] CUv3Client::DBG_MEM_READ()
+00:00:12.50 [-->] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000E80, Len:40 ]
+00:00:12.51 [<--] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000E80, Len:40 Data: 1A 43 05 4B 04 07 24 0F 08 3C A4 08 A4 00 1A 51 10 BD 00 00 00 E1 00 E0 1C ED 00 E0 0E B5 00 24 00 BF 0A A2 07 CA 6B 46 ]
+00:00:12.51 [<-T] CUv3Client::DBG_MEM_READ() = UVSC_STATUS_SUCCESS         
+00:00:12.53 [T->] CUv3Client::DBG_MEM_READ()
+00:00:12.53 [-->] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000EA8, Len:18 ]
+00:00:12.54 [<--] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000EA8, Len:18 Data: 07 C3 FF F7 09 FB FF F7 75 FF 05 24 64 1C 20 46 07 48 ]
+00:00:12.54 [<-T] CUv3Client::DBG_MEM_READ() = UVSC_STATUS_SUCCESS         
+00:00:12.54 [T->] CUv3Client::DBG_MEM_READ()
+00:00:12.54 [-->] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000EBA, Len:6 ]
+00:00:12.57 [<--] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000EBA, Len:6 Data: 00 68 40 00 06 49 ]
+00:00:12.57 [<-T] CUv3Client::DBG_MEM_READ() = UVSC_STATUS_SUCCESS         
+00:00:12.59 [T->] CUv3Client::DBG_MEM_READ()
+00:00:12.59 [-->] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000EAA, Len:2 ]
+00:00:12.61 [<--] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000EAA, Len:2 Data: FF F7 ]
+00:00:12.61 [<-T] CUv3Client::DBG_MEM_READ() = UVSC_STATUS_SUCCESS         
+00:00:12.62 [T->] CUv3Client::DBG_MEM_READ()
+00:00:12.62 [-->] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000EAE, Len:2 ]
+00:00:12.64 [<--] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000EAE, Len:2 Data: FF F7 ]
+00:00:12.64 [<-T] CUv3Client::DBG_MEM_READ() = UVSC_STATUS_SUCCESS         
+00:00:12.64 [T->] CUv3Client::DBG_MEM_READ()
+00:00:12.64 [-->] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000EB2, Len:2 ]
+00:00:12.67 [<--] [DBG_MEM_READ         ] [(AMEM) Addr:0x08000EB2, Len:2 Data: 05 24 ]
+00:00:12.67 [<-T] CUv3Client::DBG_MEM_READ() = UVSC_STATUS_SUCCESS         
+00:00:13.03 [T->] CUv3Client::DBG_MEM_READ()
+00:00:13.03 [-->] [DBG_MEM_READ         ] [(AMEM) Addr:0x20000000, Len:4 ]
+00:00:13.06 [<--] [DBG_MEM_READ         ] [(AMEM) Addr:0x20000000, Len:4 Data: 05 00 00 00 ]
+00:00:13.06 [<-T] CUv3Client::DBG_MEM_READ() = UVSC_STATUS_SUCCESS         
+00:00:13.31 [T->] CUv3Client::DBG_MEM_READ()
+00:00:13.31 [-->] [DBG_MEM_READ         ] [(AMEM) Addr:0x20000004, Len:4 ]
+00:00:13.32 [<--] [DBG_MEM_READ         ] [(AMEM) Addr:0x20000004, Len:4 Data: 06 00 00 00 ]
+00:00:13.32 [<-T] CUv3Client::DBG_MEM_READ() = UVSC_STATUS_SUCCESS         
+00:00:13.39 [T->] CUv3Client::DBG_MEM_READ()
+00:00:13.39 [-->] [DBG_MEM_READ         ] [(AMEM) Addr:0x20000004, Len:4 ]
+00:00:13.42 [<--] [DBG_MEM_READ         ] [(AMEM) Addr:0x20000004, Len:4 Data: 06 00 00 00 ]
+00:00:13.42 [<-T] CUv3Client::DBG_MEM_READ() = UVSC_STATUS_SUCCESS         

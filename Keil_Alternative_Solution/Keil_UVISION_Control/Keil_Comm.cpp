@@ -188,7 +188,7 @@ string Keil_Comm::Registers_to_xml(void)
 	
 	//Cortex M: on prend org.gnu.gdb.arm.m-profile et org.gnu.gdb.arm.m-system https://sourceware.org/gdb/onlinedocs/gdb/ARM-Features.html
 	//if( cpu_type.find("Cortex-M") != string::npos )
-		xml_register.LoadFile("arm_m.xml");
+	xml_register.LoadFile("arm_m.xml");
 
 	XMLPrinter printer;
 	xml_register.Accept(&printer);
@@ -198,7 +198,7 @@ string Keil_Comm::Registers_to_xml(void)
 
 
 	
-	string xml_file = "";
+	/*string xml_file = "";
 	ostringstream stream;
 
 
@@ -206,7 +206,7 @@ string Keil_Comm::Registers_to_xml(void)
 	stream << "<?xml version=\"1.0\"?><!DOCTYPE target SYSTEM \"gdb-target.dtd\"><target version=\"1.0\"><architecture>arm</architecture>";;
 
 	//xml_file += "< feature name = \"org.gnu.gdb.arm.m-profile\">";
-	/*xml_file += "< feature name = \"org.gnu.gdb.arm.m-system\">";*/
+	/*xml_file += "< feature name = \"org.gnu.gdb.arm.m-system\">";
 
 	int k = 0;
 	stream << "<feature name=\"org.gnu.gdb.arm.m-profile\">";
@@ -265,7 +265,7 @@ string Keil_Comm::Registers_to_xml(void)
 	}*/
 
 
-	return xml_file;
+	//return xml_file;
 }
 
 bool Keil_Comm::Enter_Debug_Mode(void)

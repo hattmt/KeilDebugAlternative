@@ -31,7 +31,7 @@ string Gdb_Server::format_keil_data_registers( )
 	for (int i = 0; i < 17; i++)
 	{
 //#ifdef DEBUG
-		cout <<" "<< keil->registers[i].szReg << " " << keil->registers[i].szVal<<"\n";
+		//cout <<" "<< keil->registers[i].szReg << " " << keil->registers[i].szVal<<"\n";
 //#endif
 		string tmp = string(keil->registers[i].szVal + 2);
 		tmp = endian_swap(tmp);
@@ -41,7 +41,7 @@ string Gdb_Server::format_keil_data_registers( )
 	for (int i = 24; i < 26; i++)
 	{
 //#ifdef DEBUG
-		cout << " " << keil->registers[i].szReg << " " << keil->registers[i].szVal << "\n";
+		//cout << " " << keil->registers[i].szReg << " " << keil->registers[i].szVal << "\n";
 //#endif
 		string tmp = string(keil->registers[i].szVal + 2);
 		tmp = endian_swap(tmp);
@@ -54,7 +54,7 @@ string Gdb_Server::format_keil_data_registers( )
 	for (int i = 27; i < 28; i++)
 	{
 //#ifdef DEBUG
-		cout << " " << keil->registers[i].szReg << " " << keil->registers[i].szVal << "\n";
+		//cout << " " << keil->registers[i].szReg << " " << keil->registers[i].szVal << "\n";
 //#endif
 		string tmp = string(keil->registers[i].szVal + 2);
 		tmp = endian_swap(tmp);
@@ -70,7 +70,7 @@ string Gdb_Server::format_keil_data_registers( )
 void Gdb_Server::Read_gdb_cmd()
 {
 
-	printf("receive from client %s\n", rx_command.c_str());
+	//printf("receive from client %s\n", rx_command.c_str());
 
 
 	if (rx_command == "c") //continue
@@ -274,9 +274,10 @@ void Gdb_Server::Read_gdb_cmd()
 
 		unhexify(buff, data_str.c_str(), data_str.length());
 
-		printf("received from client Unexified: \"%s\"\n", buff);
+		//printf("received from client Unexified: \"%s\"\n", buff);
 
 		//find halt and reset
+		this->Write("OK");
 
 	}
 
@@ -332,7 +333,7 @@ bool Gdb_Server::Write(string data)
     sprintf(tab, "$%s#%02hhX", data.c_str(), hash);
 
 
-    printf("write to client: %s\n", tab);
+   // printf("write to client: %s\n", tab);
 
 	
 	status = server.Write_Server(tab, size + 4);
